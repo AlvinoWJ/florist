@@ -62,7 +62,7 @@ export function Navbar() {
           <div className="hidden md:block">
             <LinkButton
               href="#kontak"
-              className="border-2 border-ink shadow-brutalist-sm"
+              className="btn-lift border-2 border-ink shadow-brutalist-sm"
             >
               Hubungi Kami
             </LinkButton>

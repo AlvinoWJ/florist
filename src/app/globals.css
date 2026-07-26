@@ -57,6 +57,7 @@
   --shadow-brutalist-sm: var(--shadow-brutalist-sm);
   --shadow-brutalist-md: var(--shadow-brutalist-md);
   --shadow-brutalist-lg: var(--shadow-brutalist-lg);
+  --shadow-brutalist-hover: var(--shadow-brutalist-hover);
 }
 
 :root {
@@ -104,6 +105,7 @@
   --shadow-brutalist-sm: 3px 3px 0 0 var(--color-ink);
   --shadow-brutalist-md: 5px 5px 0 0 var(--color-ink);
   --shadow-brutalist-lg: 8px 8px 0 0 var(--color-ink);
+  --shadow-brutalist-hover: 6px 6px 0 0 var(--color-ink);
 
   --border-thin: 2px;
   --border-thick: 4px;
@@ -122,5 +124,22 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer components {
+  .btn-lift {
+    transition:
+      transform 0.15s ease-out,
+      box-shadow 0.15s ease-out;
+  }
+
+  .btn-lift:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-brutalist-hover);
+  }
+
+  .btn-lift:active {
+    transform: translate(0, 0);
   }
 }

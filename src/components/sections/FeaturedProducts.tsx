@@ -7,7 +7,7 @@ export async function FeaturedProducts() {
   const products = await getFeaturedProducts();
 
   return (
-    <section id="produk" className="py-16 md:py-24 lg:py-32">
+    <section id="produk" className="py-16 md:py-24 lg:py-32 ">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <span className="font-heading text-sm font-bold uppercase tracking-widest text-secondary">

@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="beranda"
-      className="relative overflow-hidden py-16 md:py-24 lg:py-32"
+      className="relative overflow-hidden py-16 md:py-24 lg:py-32 "
     >
       {/* Organic blob background — dekoratif, tema Agriculture §5.2 */}
       <div
@@ -25,7 +25,7 @@ export function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative z-10 flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
             <span className="rounded-full border-2 border-ink bg-highlight px-4 py-1.5 text-sm font-bold text-ink">
-              🌾 Mitra Tepercaya Petani Modern
+              Mitra Tepercaya Petani Modern
             </span>
 
             <h1 className="font-heading text-5xl font-extrabold leading-[1.05] text-foreground md:text-6xl">
@@ -44,7 +44,7 @@ export function Hero() {
               <LinkButton
                 href="#produk"
                 size="lg"
-                className="gap-2 border-2 border-ink shadow-brutalist-md"
+                className="btn-lift gap-2 border-2 border-ink shadow-brutalist-md "
               >
                 Lihat Katalog Produk
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />

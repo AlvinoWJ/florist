@@ -1,11 +1,6 @@
-import {
-  Clock,
-  //   Facebook,
-  //   Instagram,
-  Mail,
-  MapPin,
-  MessageCircle,
-} from "lucide-react";
+import { Clock, PhoneCall, MapPin, MessageCircle } from "lucide-react";
+import { InstagramIcon } from "@/components/ui/instagram";
+import { FacebookIcon } from "@/components/ui/facebook";
 
 import { getWhatsappLink, storeConfig } from "@/lib/siteConfig";
 
@@ -14,7 +9,7 @@ import { LinkButton } from "@/components/ui/button";
 
 export function ContactSection() {
   return (
-    <section id="kontak" className="bg-muted py-16 md:py-24 lg:py-32">
+    <section id="kontak" className="bg-muted py-16 md:py-24 lg:py-32 ">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <span className="font-heading text-sm font-bold uppercase tracking-widest text-secondary">
@@ -47,7 +42,7 @@ export function ContactSection() {
               <ul className="text-sm text-foreground">
                 {storeConfig.operatingHours.map((item) => (
                   <li key={item.day}>
-                    <span className="font-medium">{item.day}:</span>{" "}
+                    <span className="font-medium">{item.day} :</span>{" "}
                     {item.hours}
                   </li>
                 ))}
@@ -55,16 +50,13 @@ export function ContactSection() {
             </div>
 
             <div className="flex items-start gap-3">
-              <Mail
+              <PhoneCall
                 className="mt-0.5 h-5 w-5 shrink-0 text-primary"
                 aria-hidden="true"
               />
-              <a
-                href={`mailto:${storeConfig.email}`}
-                className="text-sm text-foreground hover:text-primary"
-              >
-                {storeConfig.email}
-              </a>
+              <p className="text-sm text-foreground">
+                {storeConfig.whatsappNumber}
+              </p>
             </div>
 
             <LinkButton
@@ -79,7 +71,7 @@ export function ContactSection() {
               Chat WhatsApp
             </LinkButton>
 
-            <div className="mt-2 flex items-center gap-3">
+            <div className="mt-2 justify-center flex items-center gap-3">
               <a
                 href={storeConfig.social.instagram}
                 target="_blank"
@@ -87,7 +79,7 @@ export function ContactSection() {
                 aria-label="Instagram Florist"
                 className="flex size-11 items-center justify-center rounded-lg border-2 border-ink transition-colors hover:bg-muted"
               >
-                {/* <Instagram className="h-5 w-5" aria-hidden="true" /> */}
+                <InstagramIcon size={25} />
               </a>
               <a
                 href={storeConfig.social.facebook}
@@ -96,7 +88,7 @@ export function ContactSection() {
                 aria-label="Facebook Florist"
                 className="flex size-11 items-center justify-center rounded-lg border-2 border-ink transition-colors hover:bg-muted"
               >
-                {/* <Facebook className="h-5 w-5" aria-hidden="true" /> */}
+                <FacebookIcon size={25} />
               </a>
             </div>
           </div>
