@@ -13,9 +13,9 @@ const FOOTER_LINKS = [
 export function Footer() {
   return (
     <footer className="border-t-2 border-ink bg-foreground text-background">
-      <Container className="flex flex-col gap-8 py-12 md:flex-row md:items-start md:justify-between md:py-16">
+      <Container className="flex flex-col gap-8 py-12 items-center text-center md:py-16">
         <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2">
+          <div className="flex justify-center items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-background bg-primary text-primary-foreground">
               <Sprout className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
             </span>
