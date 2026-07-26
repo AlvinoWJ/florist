@@ -51,7 +51,7 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+                  className="text-base font-medium text-foreground/80 transition-colors hover:text-primary"
                 >
                   {link.label}
                 </a>
@@ -62,7 +62,7 @@ export function Navbar() {
           <div className="hidden md:block">
             <LinkButton
               href="#kontak"
-              className="btn-lift border-2 border-ink shadow-brutalist-sm"
+              className="btn-lift border-2 border-ink py-5 text-base font-semibold shadow-brutalist-sm"
             >
               Hubungi Kami
             </LinkButton>

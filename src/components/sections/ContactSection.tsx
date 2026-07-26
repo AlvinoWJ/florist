@@ -65,7 +65,7 @@ export function ContactSection() {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 w-full gap-2 border-2 border-ink"
+              className="mt-2 w-full gap-2 border-2 border-ink py-5 text-base font-semibold shadow-brutalist-sm "
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
               Chat WhatsApp

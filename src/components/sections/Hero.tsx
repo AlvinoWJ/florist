@@ -44,7 +44,7 @@ export function Hero() {
               <LinkButton
                 href="#produk"
                 size="lg"
-                className="btn-lift gap-2 border-2 border-ink shadow-brutalist-md "
+                className="btn-lift gap-2 border-2 border-ink py-5 text-base font-semibold shadow-brutalist-md "
               >
                 Lihat Katalog Produk
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -57,7 +57,7 @@ export function Hero() {
                 rel="noopener noreferrer"
                 variant="outline"
                 size="lg"
-                className="gap-2 border-2 border-ink"
+                className="gap-2 border-2 border-ink py-5 text-base font-semibold"
               >
                 <MessageCircle className="h-4 w-4" aria-hidden="true" />
                 Konsultasi Gratis
