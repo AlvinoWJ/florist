@@ -12,6 +12,7 @@ import { LinkButton } from "@/components/ui/button";
 const NAV_LINKS = [
   { label: "Beranda", href: "#beranda" },
   { label: "Produk", href: "#produk" },
+  { label: "Galeri", href: "#galeri" },
   { label: "Kontak", href: "#kontak" },
 ];
 
