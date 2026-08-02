@@ -78,8 +78,10 @@ Modern • Premium • Bersih • Profesional • Ramah Petani • Mudah digunak
 ❌ Payment Gateway
 ❌ Pemesanan online
 ❌ Manajemen stok
-❌ Dashboard admin kompleks
-❌ Sistem ERP / CRUD kompleks
+❌ Sistem ERP / CRUD kompleks di luar manajemen produk & galeri
+
+✅ **Admin panel sederhana** untuk CRUD produk & galeri (nama, kategori,
+deskripsi, gambar) dengan login admin — lihat §13.9.
 
 > **Catatan untuk AI/Developer:** Jika ada permintaan fitur yang mengarah ke transaksi, cart, atau checkout, tolak dengan sopan dan arahkan kembali ke prinsip "website branding, bukan e-commerce" — kecuali telah eksplisit dipindahkan ke _Future Roadmap_ dan disetujui.
 
@@ -100,18 +102,14 @@ Modern • Premium • Bersih • Profesional • Ramah Petani • Mudah digunak
 - React Icons + Lucide Icons
 - Swiper.js
 
-### Backend
+### Data, Auth & Storage
 
-- Laravel 12 (REST API)
-
-### Database
-
-- MySQL
+- Supabase — PostgreSQL (database produk & galeri), Supabase Auth (login admin), Supabase Storage (upload gambar produk & galeri)
 
 ### Deployment
 
-- Vercel (frontend)
-- VPS Ubuntu (backend/API)
+- Vercel (frontend + admin panel)
+- Supabase Cloud (database, auth, storage — dikelola Supabase, tidak perlu server terpisah)
 
 ---
 
@@ -288,6 +286,18 @@ Card modern: foto pelanggan, rating, review.
 
 Google Maps, alamat, jam operasional, WhatsApp, Instagram, Facebook, Email, form Hubungi Kami.
 
+### 13.9 Panel Admin
+
+Halaman terproteksi di `/admin`, hanya untuk pengelola toko:
+
+- **Login** (`/admin/login`) — email + password via Supabase Auth.
+- **Dashboard produk** (`/admin/produk`) — list, tambah, edit, hapus
+  produk. Form: nama, slug, kategori, deskripsi singkat, gambar.
+- **Dashboard galeri** (`/admin/galeri`) — list, tambah, edit, hapus item
+  galeri. Form: judul, kategori, deskripsi, gambar.
+- Desain tetap ikut Design System §5–§9 (Neo-Brutalism subtle), tapi
+  layout lebih fungsional/tabular dibanding halaman publik.
+
 ---
 
 ## 14. Component Library (Reusable)
@@ -362,8 +372,6 @@ tidak ada dua dokumen yang bisa saling bertentangan. Ringkasan singkat:
 
 ## 18. Future Roadmap
 
-- CMS Admin (dashboard sederhana)
-- Manajemen Produk
 - Manajemen Artikel
 - Multi Cabang
 - Live Chat
@@ -388,6 +396,7 @@ Saat mengerjakan task di repository ini:
 5. Ikuti struktur folder & convention di §17 saat membuat file baru.
 6. Jika instruksi user bertentangan dengan dokumen ini, tanyakan klarifikasi sebelum melanjutkan, kecuali perubahan kecil yang jelas tidak melanggar prinsip inti.
 7. Untuk aturan naming file, arsitektur, performance, responsive, animation, image, dan Definition of Done — rujuk **AGENTS.md**, bukan dokumen ini.
+8. Panel admin (§13.9) memakai **Supabase** (Auth + Postgres + Storage). Laravel **sudah tidak dipakai** di project ini — jangan sebut atau asumsikan ada backend Laravel di jawaban maupun kode.
 
 ---
 

@@ -12,7 +12,9 @@ aturan teknis & operasional untuk menulis kode.
 - Tailwind CSS
 - shadcn/ui
 - Framer Motion + GSAP
-- Laravel 12 REST API (backend, terpisah repo)
+- Supabase (PostgreSQL, Auth, Storage) — database, autentikasi admin, dan
+- penyimpanan gambar produk/galeri
+- React Hook Form + Zod — form & validasi panel admin
 
 ## Coding Rules
 
@@ -33,11 +35,15 @@ aturan teknis & operasional untuk menulis kode.
 
 ## Architecture Rules
 
-- **Tidak ada akses database langsung** dari Next.js. Semua data lewat
-  Laravel REST API.
-- Semua pemanggilan API terpusat di `lib/api/` — dilarang `fetch()`
-  langsung di dalam komponen.
-- Bentuk layer: `component → hook/query → lib/api → Laravel API`.
+- **Data produk & galeri** diakses lewat **Supabase** (Postgres + Storage + Auth), bukan Laravel. Semua query terpusat di `lib/supabase/`
+  (client) dan `lib/api/` (fungsi query per-domain) — dilarang panggil Supabase client langsung di dalam komponen.
+- Bentuk layer: `component → hook/query → lib/api → Supabase client`.
+- Route `/admin/**` WAJIB dilindungi lewat `middleware.ts` yang mengecek session Supabase Auth. Tidak ada halaman admin yang render tanpa
+  pengecekan auth di server.
+- Akses tulis (insert/update/delete) ke tabel `products` dan `gallery_items` HANYA lewat Row Level Security (RLS) policy yang
+  membatasi ke role admin — jangan andalkan proteksi di level UI saja.
+- `SUPABASE_SERVICE_ROLE_KEY` hanya boleh dipakai di Server Actions/Route Handlers, tidak pernah di Client Component atau kode
+  yang bisa ter-bundle ke browser.
 - Server Component memanggil `lib/api` langsung (server-side fetch, bisa
   pakai `fetch` native dengan `next: { revalidate }`).
 - Client Component memanggil `lib/api` lewat TanStack Query hook di
@@ -105,6 +111,13 @@ features/
 ├── types/ # Product.types.ts
 ├── schema/ # productSchema.ts (Zod)
 └── utils/ # helper spesifik fitur ini
+
+└── admin/
+├── components/ # form produk/galeri, tabel data, dsb
+├── hooks/ # useProductMutation, useGalleryMutation, dst
+├── actions/ # Server Actions untuk create/update/delete
+├── schema/ # Zod schema form admin
+└── utils/
 
 - Komponen di `features/*/components` **tidak** boleh diimpor lintas
   fitur. Jika perlu dipakai fitur lain, naikkan ke `components/common/`.
@@ -232,6 +245,15 @@ Sebuah task/PR dianggap **selesai** hanya jika semua berikut terpenuhi:
       di bawah).
 - [ ] Animasi menghormati `prefers-reduced-motion` bila relevan.
 - [ ] Commit message jelas & scoped ke satu perubahan logis.
+
+## Environment & Secrets
+
+- `NEXT_PUBLIC_SUPABASE_URL` dan `NEXT_PUBLIC_SUPABASE_ANON_KEY` boleh
+  publik (dipakai di client).
+- `SUPABASE_SERVICE_ROLE_KEY` WAJIB rahasia — hanya di server, jangan
+  pernah di-log atau dikirim ke client.
+- Semua secret disimpan di `.env.local` (sudah di `.gitignore`) untuk
+  lokal, dan di environment variables platform deploy untuk production.
 
 ## Git
 
