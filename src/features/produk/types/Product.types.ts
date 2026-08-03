@@ -1,3 +1,5 @@
+export type ProductType = "produk" | "jasa";
+
 export type ProductCategory =
   | "pupuk"
   | "pestisida"
@@ -6,14 +8,21 @@ export type ProductCategory =
   | "alat-pertanian"
   | "media-tanam"
   | "pakan"
+  | "tanaman-hias"
+  | "tanaman-buah"
+  | "pot-tanaman"
+  | "hidroponik"
+  | "jasa-taman"
+  | "jasa-dekorasi"
   | "lainnya";
 
 export interface Product {
   id: string;
   slug: string;
   name: string;
+  type: ProductType;
   category: ProductCategory;
   shortDescription: string;
   brand?: string;
-  imageurl?: string | null;
+  imageUrl?: string | null;
 }

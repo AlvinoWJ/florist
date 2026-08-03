@@ -8,7 +8,7 @@ export default async function AdminProdukPage() {
   const supabase = await createClient();
   const { data: products, error } = await supabase
     .from("products")
-    .select("id, name, category, slug")
+    .select("id, name, type, category, slug")
     .order("created_at", { ascending: false });
 
   return (
@@ -36,6 +36,7 @@ export default async function AdminProdukPage() {
           <thead className="border-b-2 border-ink bg-muted">
             <tr>
               <th className="px-4 py-3 font-semibold">Nama</th>
+              <th className="px-4 py-3 font-semibold">Jenis</th>
               <th className="px-4 py-3 font-semibold">Kategori</th>
               <th className="px-4 py-3 font-semibold">Slug</th>
               <th className="px-4 py-3 font-semibold text-right">Aksi</th>
@@ -48,6 +49,7 @@ export default async function AdminProdukPage() {
                 className="border-b border-ink/10 last:border-0"
               >
                 <td className="px-4 py-3 font-medium">{product.name}</td>
+                <td className="px-4 py-3 font-medium">{product.type}</td>
                 <td className="px-4 py-3">{product.category}</td>
                 <td className="px-4 py-3 text-muted-foreground">
                   {product.slug}

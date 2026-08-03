@@ -1,11 +1,11 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useMemo, useState } from "react";
 import Link from "next/link";
 
 import { updateProductAction } from "@/features/admin/action/productAction";
 
-const CATEGORIES = [
+const PRODUK_CATEGORIES = [
   { value: "pupuk", label: "Pupuk" },
   { value: "pestisida", label: "Pestisida" },
   { value: "bibit", label: "Bibit" },
@@ -13,7 +13,16 @@ const CATEGORIES = [
   { value: "alat-pertanian", label: "Alat Pertanian" },
   { value: "media-tanam", label: "Media Tanam" },
   { value: "pakan", label: "Pakan" },
+  { value: "tanaman-hias", label: "Tanaman Hias" },
+  { value: "tanaman-buah", label: "Tanaman Buah" },
+  { value: "pot-tanaman", label: "Pot Tanaman" },
+  { value: "hidroponik", label: "Hidroponik" },
   { value: "lainnya", label: "Lainnya" },
+];
+
+const JASA_CATEGORIES = [
+  { value: "jasa-taman", label: "Jasa Taman & Menanam" },
+  { value: "jasa-dekorasi", label: "Jasa Dekorasi (Pernikahan/Panggung)" },
 ];
 
 interface EditProductFormProps {
@@ -21,6 +30,7 @@ interface EditProductFormProps {
     id: string;
     name: string;
     slug: string;
+    type: string;
     category: string;
     short_description: string;
     brand: string | null;
@@ -34,11 +44,19 @@ export function EditProductForm({ product }: EditProductFormProps) {
     updateWithId,
     undefined,
   );
+  const [type, setType] = useState<"produk" | "jasa">(
+    product.type === "jasa" ? "jasa" : "produk",
+  );
+
+  const categories = useMemo(
+    () => (type === "jasa" ? JASA_CATEGORIES : PRODUK_CATEGORIES),
+    [type],
+  );
 
   return (
     <div className="mx-auto max-w-xl">
       <h1 className="font-heading text-2xl font-bold text-foreground">
-        Edit Produk
+        Edit Produk / Jasa
       </h1>
 
       <form
@@ -47,7 +65,6 @@ export function EditProductForm({ product }: EditProductFormProps) {
         className="mt-6 flex flex-col gap-4 rounded-2xl border-2 border-ink bg-card p-6 shadow-brutalist-sm"
       >
         {product.image_url ? (
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={product.image_url}
             alt={product.name}
@@ -55,18 +72,30 @@ export function EditProductForm({ product }: EditProductFormProps) {
           />
         ) : null}
 
-        <Field
-          label="Nama Produk"
-          name="name"
-          defaultValue={product.name}
-          required
-        />
+        <Field label="Nama" name="name" defaultValue={product.name} required />
         <Field
           label="Slug (untuk URL)"
           name="slug"
           defaultValue={product.slug}
           required
         />
+
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="type" className="text-sm font-medium text-foreground">
+            Jenis
+          </label>
+          <select
+            id="type"
+            name="type"
+            value={type}
+            onChange={(e) => setType(e.target.value as "produk" | "jasa")}
+            required
+            className="rounded-lg border-2 border-ink bg-background px-3 py-2 text-sm outline-none"
+          >
+            <option value="produk">Produk</option>
+            <option value="jasa">Jasa</option>
+          </select>
+        </div>
 
         <div className="flex flex-col gap-1.5">
           <label
@@ -82,7 +111,7 @@ export function EditProductForm({ product }: EditProductFormProps) {
             required
             className="rounded-lg border-2 border-ink bg-background px-3 py-2 text-sm outline-none"
           >
-            {CATEGORIES.map((c) => (
+            {categories.map((c) => (
               <option key={c.value} value={c.value}>
                 {c.label}
               </option>

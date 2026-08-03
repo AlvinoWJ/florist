@@ -1,11 +1,11 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useMemo, useState } from "react";
 import Link from "next/link";
 
 import { createProductAction } from "@/features/admin/action/productAction";
 
-const CATEGORIES = [
+const PRODUK_CATEGORIES = [
   { value: "pupuk", label: "Pupuk" },
   { value: "pestisida", label: "Pestisida" },
   { value: "bibit", label: "Bibit" },
@@ -13,7 +13,16 @@ const CATEGORIES = [
   { value: "alat-pertanian", label: "Alat Pertanian" },
   { value: "media-tanam", label: "Media Tanam" },
   { value: "pakan", label: "Pakan" },
+  { value: "tanaman-hias", label: "Tanaman Hias" },
+  { value: "tanaman-buah", label: "Tanaman Buah" },
+  { value: "pot-tanaman", label: "Pot Tanaman" },
+  { value: "hidroponik", label: "Hidroponik" },
   { value: "lainnya", label: "Lainnya" },
+];
+
+const JASA_CATEGORIES = [
+  { value: "jasa-taman", label: "Jasa Taman & Menanam" },
+  { value: "jasa-dekorasi", label: "Jasa Dekorasi (Pernikahan/Panggung)" },
 ];
 
 export default function NewProductPage() {
@@ -21,11 +30,17 @@ export default function NewProductPage() {
     createProductAction,
     undefined,
   );
+  const [type, setType] = useState<"produk" | "jasa">("produk");
+
+  const categories = useMemo(
+    () => (type === "jasa" ? JASA_CATEGORIES : PRODUK_CATEGORIES),
+    [type],
+  );
 
   return (
     <div className="mx-auto max-w-xl">
       <h1 className="font-heading text-2xl font-bold text-foreground">
-        Tambah Produk
+        Tambah Produk / Jasa
       </h1>
 
       <form
@@ -33,13 +48,30 @@ export default function NewProductPage() {
         encType="multipart/form-data"
         className="mt-6 flex flex-col gap-4 rounded-2xl border-2 border-ink bg-card p-6 shadow-brutalist-sm"
       >
-        <Field label="Nama Produk" name="name" required />
+        <Field label="Nama" name="name" required />
         <Field
           label="Slug (untuk URL)"
           name="slug"
           required
           placeholder="pupuk-npk-organik"
         />
+
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="type" className="text-sm font-medium text-foreground">
+            Jenis
+          </label>
+          <select
+            id="type"
+            name="type"
+            value={type}
+            onChange={(e) => setType(e.target.value as "produk" | "jasa")}
+            required
+            className="rounded-lg border-2 border-ink bg-background px-3 py-2 text-sm outline-none"
+          >
+            <option value="produk">Produk</option>
+            <option value="jasa">Jasa</option>
+          </select>
+        </div>
 
         <div className="flex flex-col gap-1.5">
           <label
@@ -54,7 +86,7 @@ export default function NewProductPage() {
             required
             className="rounded-lg border-2 border-ink bg-background px-3 py-2 text-sm outline-none"
           >
-            {CATEGORIES.map((c) => (
+            {categories.map((c) => (
               <option key={c.value} value={c.value}>
                 {c.label}
               </option>
@@ -85,7 +117,7 @@ export default function NewProductPage() {
             htmlFor="image"
             className="text-sm font-medium text-foreground"
           >
-            Gambar Produk
+            Gambar
           </label>
           <input
             id="image"
@@ -106,7 +138,7 @@ export default function NewProductPage() {
             disabled={isPending}
             className="btn-lift rounded-lg border-2 border-ink bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-brutalist-sm disabled:opacity-60"
           >
-            {isPending ? "Menyimpan..." : "Simpan Produk"}
+            {isPending ? "Menyimpan..." : "Simpan"}
           </button>
           <Link
             href="/admin/produk"

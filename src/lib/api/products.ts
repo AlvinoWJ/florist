@@ -5,7 +5,9 @@ export async function getFeaturedProducts(): Promise<Product[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("products")
-    .select("id, slug, name, category, short_description, brand, image_url")
+    .select(
+      "id, slug, name, type, category, short_description, brand, image_url",
+    )
     .order("created_at", { ascending: false })
     .limit(8);
 
@@ -18,6 +20,7 @@ export async function getFeaturedProducts(): Promise<Product[]> {
     id: row.id,
     slug: row.slug,
     name: row.name,
+    type: row.type as Product["type"],
     category: row.category as Product["category"],
     shortDescription: row.short_description,
     brand: row.brand ?? undefined,

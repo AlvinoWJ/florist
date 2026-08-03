@@ -15,6 +15,12 @@ const CATEGORY_LABEL: Record<Product["category"], string> = {
   "alat-pertanian": "Alat Pertanian",
   "media-tanam": "Media Tanam",
   pakan: "Pakan",
+  "tanaman-hias": "Tanaman Hias",
+  "tanaman-buah": "Tanaman Buah",
+  "pot-tanaman": "Pot Tanaman",
+  hidroponik: "Hidroponik",
+  "jasa-taman": "Jasa Taman & Menanam",
+  "jasa-dekorasi": "Jasa Dekorasi",
   lainnya: "Lainnya",
 };
 
@@ -23,9 +29,13 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const isJasa = product.type === "jasa";
+  const waMessage = isJasa
+    ? `Halo, saya ingin menanyakan jasa ${product.name}`
+    : `Halo, saya ingin bertanya tentang produk ${product.name}`;
+
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border-2 border-ink bg-card shadow-brutalist-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-brutalist-md">
-      {/* Placeholder foto produk — ganti dengan next/image saat foto asli tersedia (lihat AGENTS.md § Image Rules) */}
       <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-secondary/20 to-accent/30">
         <Sprout
           className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110"
@@ -35,7 +45,7 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-4 md:p-6">
-        <Badge variant="secondary" className="w-fit">
+        <Badge variant={isJasa ? "accent" : "secondary"} className="w-fit">
           {CATEGORY_LABEL[product.category]}
         </Badge>
 
@@ -48,15 +58,13 @@ export function ProductCard({ product }: ProductCardProps) {
         </p>
 
         <LinkButton
-          href={getWhatsappLink(
-            `Halo, saya ingin bertanya tentang produk ${product.name}`,
-          )}
+          href={getWhatsappLink(waMessage)}
           target="_blank"
           rel="noopener noreferrer"
           variant="outline"
           className="w-full border-ink"
         >
-          Konsultasi via WhatsApp
+          {isJasa ? "Tanya Jasa Ini" : "Konsultasi via WhatsApp"}
         </LinkButton>
       </div>
     </article>

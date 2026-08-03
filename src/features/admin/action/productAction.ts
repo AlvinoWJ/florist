@@ -33,6 +33,7 @@ export async function createProductAction(
   const parsed = productSchema.safeParse({
     name: formData.get("name"),
     slug: formData.get("slug"),
+    type: formData.get("type"),
     category: formData.get("category"),
     shortDescription: formData.get("shortDescription"),
     brand: formData.get("brand") || undefined,
@@ -56,6 +57,7 @@ export async function createProductAction(
   const { error } = await supabase.from("products").insert({
     name: parsed.data.name,
     slug: parsed.data.slug,
+    type: parsed.data.type,
     category: parsed.data.category,
     short_description: parsed.data.shortDescription,
     brand: parsed.data.brand ?? null,
@@ -77,6 +79,7 @@ export async function updateProductAction(
   const parsed = productSchema.safeParse({
     name: formData.get("name"),
     slug: formData.get("slug"),
+    type: formData.get("type"),
     category: formData.get("category"),
     shortDescription: formData.get("shortDescription"),
     brand: formData.get("brand") || undefined,
@@ -90,6 +93,7 @@ export async function updateProductAction(
   const updatePayload: Record<string, unknown> = {
     name: parsed.data.name,
     slug: parsed.data.slug,
+    type: parsed.data.type,
     category: parsed.data.category,
     short_description: parsed.data.shortDescription,
     brand: parsed.data.brand ?? null,
