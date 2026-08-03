@@ -15,4 +15,5 @@ export interface Product {
   category: ProductCategory;
   shortDescription: string;
   brand?: string;
+  imageurl?: string | null;
 }

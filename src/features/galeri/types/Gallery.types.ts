@@ -10,4 +10,5 @@ export interface GalleryItem {
   title: string;
   category: GalleryCategory;
   description: string;
+  imageurl?: string | null;
 }
