@@ -1,6 +1,6 @@
 export const storeConfig = {
-  name: "Florist",
-  tagline: "Mitra Tepercaya Petani Modern",
+  name: "Sugih Florist",
+  tagline: "Keindahan Alam, Hadir di Rumahmu",
   whatsappNumber: "+6281374537801",
   address:
     "Jl. Rejosari, Mojogeneng, Gedangan, Kec. Mojowarno, Kabupaten Jombang, Jawa Timur",

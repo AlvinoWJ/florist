@@ -1,6 +1,6 @@
 # CLAUDE.md — Project Guide
 
-## Website Branding Toko Pertanian Modern
+## Website Branding Toko Tanaman Hias Modern
 
 > Dokumen ini adalah pedoman utama pengembangan project. Wajib dibaca dan
 > diikuti oleh AI assistant (Claude) maupun developer manusia sebelum
@@ -16,20 +16,19 @@
 
 ### 1.1 Nama Project
 
-**Florist** — Website Branding Toko Pertanian Modern
-_(nama placeholder, sesuaikan dengan nama toko sebenarnya)_
+**Sugih Florist** — Website Branding Toko Tanaman Hias Modern
 
 ### 1.2 Visi Website
 
-Menjadi wajah digital toko pertanian yang mencerminkan profesionalisme, kepercayaan, dan kedekatan dengan dunia pertanian modern — menjembatani petani tradisional dengan pengalaman digital setara brand startup kelas dunia.
+Menjadi wajah digital toko tanaman hias yang mencerminkan profesionalisme, kepercayaan, dan kedekatan dengan gaya hidup pecinta tanaman — menjembatani pecinta tanaman dengan pengalaman digital setara brand lifestyle kelas dunia.
 
 ### 1.3 Misi Website
 
-- Memperkenalkan toko dan seluruh lini produk secara profesional dan mudah diakses.
+- Memperkenalkan toko dan seluruh koleksi tanaman hias secara profesional dan mudah diakses.
 - Membangun kepercayaan pelanggan melalui presentasi visual yang premium namun tetap ramah.
-- Menjadi media edukasi pertanian melalui konten artikel dan informasi produk.
+- Menjadi media inspirasi dekorasi rumah dan perawatan tanaman melalui konten artikel dan informasi produk.
 - Memudahkan calon pelanggan menghubungi toko tanpa friksi (WhatsApp, kontak langsung).
-- Memperkuat citra toko sebagai mitra petani, bukan sekadar penjual.
+- Memperkuat citra toko sebagai partner gaya hidup hijau, bukan sekadar penjual tanaman.
 
 ### 1.4 Tujuan Pengembangan
 
@@ -40,12 +39,12 @@ Menjadi wajah digital toko pertanian yang mencerminkan profesionalisme, kepercay
 
 ### 1.5 Target Pengguna
 
-| Segmen                        | Kebutuhan                                        |
-| ----------------------------- | ------------------------------------------------ |
-| Petani / pekebun              | Info produk jelas, cara pakai, kontak mudah (WA) |
-| Pemilik usaha tani/agribisnis | Kepercayaan, kredibilitas, katalog lengkap       |
-| Pelanggan umum/retail         | Navigasi mudah, visual menarik, kontak cepat     |
-| Mitra/distributor potensial   | Profil perusahaan, portofolio, kontak formal     |
+| Segmen                         | Kebutuhan                                        |
+| ------------------------------ | ------------------------------------------------ |
+| Pecinta tanaman hias           | Info produk jelas, cara rawat, kontak mudah (WA) |
+| Dekorator interior / eksterior | Kepercayaan, kredibilitas, katalog lengkap       |
+| Pelanggan umum/retail          | Navigasi mudah, visual menarik, kontak cepat     |
+| Mitra/reseller potensial       | Profil perusahaan, portofolio, kontak formal     |
 
 ### 1.6 Nilai yang Ingin Dibangun
 
@@ -53,11 +52,11 @@ Menjadi wajah digital toko pertanian yang mencerminkan profesionalisme, kepercay
 - **Berpengalaman** — storytelling sejarah dan perjalanan toko.
 - **Ramah** — bahasa dan visual yang hangat, tidak intimidatif.
 - **Modern** — teknologi dan desain terkini.
-- **Berkelanjutan** — nuansa alami, mendukung pertanian sehat.
+- **Estetik & Berkelanjutan** — nuansa hijau alami, mendukung gaya hidup sehat.
 
 ### 1.7 Branding yang Ingin Ditampilkan
 
-Modern • Premium • Bersih • Profesional • Ramah Petani • Mudah digunakan • Cepat • Interaktif • Responsif
+Modern • Premium • Bersih • Profesional • Estetik • Mudah digunakan • Cepat • Interaktif • Responsif
 
 ---
 
@@ -66,7 +65,7 @@ Modern • Premium • Bersih • Profesional • Ramah Petani • Mudah digunak
 ### 2.1 Yang Termasuk Scope
 
 - Branding perusahaan
-- Memperkenalkan produk (katalog digital, bukan toko online)
+- Memperkenalkan produk (katalog digital tanaman hias, bukan toko online)
 - Menampilkan informasi toko (lokasi, jam operasional, kontak)
 - Meningkatkan kepercayaan pelanggan (testimoni, galeri, cerita)
 - Memudahkan pelanggan menghubungi toko (WhatsApp, form, sosial media)
@@ -117,13 +116,13 @@ deskripsi, gambar) dengan login admin — lihat §13.9.
 
 Desain mengedepankan: **Minimalis, Modern, Elegan, Natural, Fresh, Clean, Premium, Professional.**
 
-**Inspirasi desain:** Apple, Awwwards, Stripe, Vercel, Linear, Framer, Shopify — dipadukan dengan nuansa pertanian modern.
+**Inspirasi desain:** Apple, Awwwards, Stripe, Vercel, Linear, Framer, Shopify — dipadukan dengan nuansa tanaman hias modern.
 
 ---
 
 ## 5. Design Theme — "Modern Organic Neo-Brutalism"
 
-Perpaduan karakter Neo-Brutalism dengan nuansa pertanian modern, menghasilkan identitas visual yang unik, ramah, profesional, dan mudah diingat — berbeda dari website toko pertanian pada umumnya.
+Perpaduan karakter Neo-Brutalism dengan nuansa tanaman hias modern, menghasilkan identitas visual yang unik, ramah, profesional, dan mudah diingat — berbeda dari website toko tanaman pada umumnya.
 
 **Konsep visual:** Modern, Fresh, Playful, Professional, Clean, Organic, Bold, Interactive, Premium, Memorable.
 
@@ -134,7 +133,7 @@ Perpaduan karakter Neo-Brutalism dengan nuansa pertanian modern, menghasilkan id
 - Border tebal (2–4px) **hanya** pada card penting & tombol utama.
 - Shadow tegas dengan offset sederhana (bukan blur berlebihan).
 - Sudut membulat (`rounded-xl` s/d `rounded-3xl`) agar tetap ramah.
-- Warna solid dipadukan warna alami pertanian.
+- Warna solid dipadukan warna alami tanaman.
 - Ilustrasi sederhana, bentuk geometris.
 - Typography besar, tegas, mudah dibaca.
 - Layout asimetris tapi terstruktur.
@@ -142,11 +141,11 @@ Perpaduan karakter Neo-Brutalism dengan nuansa pertanian modern, menghasilkan id
 - Hover interaction menyenangkan.
 - Micro animation pada hampir seluruh komponen (halus, tidak berlebihan).
 
-### 5.2 Agriculture Theme
+### 5.2 Floral & Plant Theme
 
-**Inspirasi visual:** sawah, daun, tanaman, tanah, bibit, pupuk, matahari, air, hasil panen.
+**Inspirasi visual:** daun, bunga, pot, taman, sukulen, rimbunan hijau, cahaya alami.
 
-**Elemen visual:** organic shape, leaf pattern, grain texture, blob background, nature illustration, farming icon, plant pattern, abstract landscape, seed pattern.
+**Elemen visual:** organic shape, leaf pattern, botanical texture, blob background, nature illustration, plant icon, floral pattern, abstract garden, potted-plant silhouette.
 
 ⚠️ Hindari ikon/ilustrasi yang terlalu kartun.
 
@@ -176,17 +175,17 @@ Perpaduan karakter Neo-Brutalism dengan nuansa pertanian modern, menghasilkan id
 
 ## 7. Typography
 
-| Fungsi  | Font                 |
-| ------- | -------------------- |
-| Heading | Space Grotesk / Sora |
-| Body    | Plus Jakarta Sans    |
-| Angka   | Inter                |
+| Fungsi  | Font              |
+| ------- | ----------------- |
+| Heading | Space Grotesk     |
+| Body    | Plus Jakarta Sans |
+| Angka   | Inter             |
 
 ---
 
 ## 8. UI Components (Gaya Modern Organic Neo-Brutalism)
 
-- **Hero** — ilustrasi pertanian modern + CTA mencolok.
+- **Hero** — foto taman/tanaman hias berkualitas tinggi + CTA mencolok.
 - **Product Card** — border tebal, shadow offset, hover efek responsif.
 - **Category Card** — warna cerah, ikon sederhana.
 - **Testimonial Card** — playful namun profesional.
@@ -211,7 +210,7 @@ Animasi yang disarankan: Smooth Page Transition, Scroll Reveal, Fade Up/Left/Rig
 ## 10. Overall Impression
 
 Saat pertama membuka website, pengguna harus merasakan:
-Modern namun dekat dengan pertanian • Profesional & terpercaya • Identitas visual kuat • Berbeda dari toko pertanian biasa • Menarik dijelajahi • Responsif & cepat • Setara pengalaman startup modern / landing page pemenang desain.
+Modern namun dekat dengan alam • Profesional & terpercaya • Identitas visual kuat • Berbeda dari toko tanaman biasa • Menarik dijelajahi • Responsif & cepat • Setara pengalaman startup modern / landing page pemenang desain.
 
 ---
 
@@ -228,7 +227,7 @@ Modern namun dekat dengan pertanian • Profesional & terpercaya • Identitas v
 | Animation                      | Lihat §9                                                           |
 | Icon Style                     | Lucide Icons + React Icons, line-style sederhana                   |
 | Illustration Style             | Geometris, organik, tidak kartun                                   |
-| Photography Style              | Natural, terang, high-quality, konteks pertanian nyata             |
+| Photography Style              | Natural, terang, high-quality, konteks tanaman/taman nyata         |
 
 ---
 
@@ -254,25 +253,25 @@ Modern namun dekat dengan pertanian • Profesional & terpercaya • Identitas v
 
 Hero Section (dengan animated background) → Brand Tagline → Quick Product Preview → Statistics → Partner Logo → Featured Products → Customer Trust → Gallery → Testimonial → FAQ → Location → Footer.
 
-### 13.2 Tentang Kami
+### 13.2 Produk (Katalog, bukan toko)
 
-Sejarah Toko, Visi, Misi, Nilai Perusahaan, Tim, Perjalanan Bisnis.
+**Kategori:** Tanaman Hias Daun, Bunga, Anggrek, Sukulen, Bonsai, Tanaman Gantung, Pot & Aksesoris.
 
-### 13.3 Produk (Katalog, bukan toko)
-
-**Kategori:** Pupuk, Pestisida, Bibit, Benih, Alat Pertanian, Media Tanam, Pakan, Lainnya.
-
-**Setiap produk memiliki:** foto berkualitas tinggi, nama, kategori, deskripsi, keunggulan, cara penggunaan, manfaat, spesifikasi, merek, galeri, produk terkait.
+**Setiap produk memiliki:** foto berkualitas tinggi, nama, kategori, deskripsi, keunggulan, cara perawatan, manfaat, spesifikasi, merek, galeri, produk terkait.
 
 **Tidak ada tombol beli.** Hanya: _Hubungi Kami_, _Konsultasi via WhatsApp_, _Lihat Produk Lain_.
 
-### 13.4 Detail Produk
+### 13.3 Tentang Kami
 
-Layout premium (seperti landing page): Hero Image, Image Gallery, Sticky Navigation, Benefit Card, Accordion, FAQ, Related Products, CTA WhatsApp.
+Sejarah Toko, Visi, Misi, Nilai Perusahaan, Tim, Perjalanan Bisnis.
+
+### 13.4 Detail Produk & Layanan
+
+Layout premium (seperti landing page): Hero Image, Image Gallery, Sticky Navigation, Benefit Card, Accordion, FAQ, Related Products, CTA WhatsApp. Mencakup layanan konsultasi perawatan, pengiriman, garansi tanaman, dan penataan taman.
 
 ### 13.5 Artikel (Edukasi)
 
-Tips Bertani, Cara Pemupukan, Pengendalian Hama, Musim Tanam, Teknologi Pertanian.
+Tips Perawatan Tanaman, Cara Repotting, Pengendalian Hama Tanaman Hias, Ide Dekorasi Taman, Tren Tanaman Musiman.
 
 ### 13.6 Galeri
 
@@ -312,7 +311,7 @@ Navbar, Footer, Hero, Section Header, Animated Card, Product Card, Category Card
 
 ### 15.1 Branding Strategy
 
-Website harus membangun persepsi: Terpercaya, Berpengalaman, Produk Berkualitas, Harga Kompetitif, Pelayanan Ramah, Konsultasi Gratis, Mitra Petani.
+Website harus membangun persepsi: Terpercaya, Berpengalaman, Produk Berkualitas, Harga Kompetitif, Pelayanan Ramah, Konsultasi Gratis, Partner Gaya Hidup Hijau.
 
 ### 15.2 SEO Strategy
 
@@ -362,10 +361,10 @@ tidak ada dua dokumen yang bisa saling bertentangan. Ringkasan singkat:
   Hierarchy.
 - `features/<nama-fitur>/` untuk domain (produk, artikel, dll) — lihat
   AGENTS.md § Feature Structure.
-- Semua warna & spacing mengacu ke Design Tokens (§20), tidak hardcode.
+- Semua warna & spacing mengacu ke Design Tokens (§22), tidak hardcode.
 - Setiap komponen visual baru wajib mengikuti guideline §5–§9
-  (Neo-Brutalism subtle + Agriculture theme).
-- API call ke Laravel backend melalui layer `lib/api/` terpusat.
+  (Neo-Brutalism subtle + Floral & Plant theme).
+- Setiap Server Action/Server Component data-fetch melalui layer `lib/api/` terpusat.
 - Setiap PR/perubahan mengikuti Definition of Done di AGENTS.md.
 
 ---
@@ -375,7 +374,7 @@ tidak ada dua dokumen yang bisa saling bertentangan. Ringkasan singkat:
 - Manajemen Artikel
 - Multi Cabang
 - Live Chat
-- AI Chatbot Pertanian
+- AI Chatbot Perawatan Tanaman
 - Katalog PDF
 - QR Code Produk
 - Sistem Reservasi Konsultasi
@@ -386,6 +385,21 @@ tidak ada dua dokumen yang bisa saling bertentangan. Ringkasan singkat:
 ---
 
 ## 19. Catatan untuk AI Assistant (Claude)
+
+Saat mengerjakan task di repository ini:
+
+1. Selalu ingat: **ini website branding, bukan e-commerce.** Jangan menambahkan fitur cart/checkout/payment kecuali diminta eksplisit sebagai eksperimen di luar scope.
+2. Selalu terapkan tema **Modern Organic Neo-Brutalism** secara _subtle_ — cek ulang §5 sebelum membuat komponen visual baru.
+3. Gunakan palet warna & typography di §6–§7 secara konsisten, jangan menciptakan warna baru tanpa alasan kuat. **Dilarang hardcode nilai hex/px langsung di komponen** — selalu lewat CSS variable/Tailwind token di §22.
+4. Setiap card penting (product card, category card, dsb) **wajib** memakai border tebal (`border-2`/`border-4` + `border-ink`) dan shadow brutalist (`shadow-brutalist-sm/md/lg`) sesuai §5.1 — jangan pakai `shadow` default Tailwind.
+5. Font wajib sesuai §7: heading selalu Space Grotesk (`font-heading`), body selalu Plus Jakarta Sans (`font-sans`), angka/harga/statistik selalu Inter (`font-number`) — jangan campur.
+6. Prioritaskan performa (§16) — hindari animasi/asset berat yang menurunkan skor Lighthouse.
+7. Ikuti struktur folder & convention di §17 saat membuat file baru.
+8. Jika instruksi user bertentangan dengan dokumen ini, tanyakan klarifikasi sebelum melanjutkan, kecuali perubahan kecil yang jelas tidak melanggar prinsip inti.
+9. Untuk aturan naming file, arsitektur, performance, responsive, animation, image, dan Definition of Done — rujuk **AGENTS.md**, bukan dokumen ini.
+10. Panel admin (§13.9) memakai **Supabase** (Auth + Postgres + Storage). Laravel **sudah tidak dipakai** di project ini — jangan sebut atau asumsikan ada backend Laravel di jawaban maupun kode.
+
+---
 
 Saat mengerjakan task di repository ini:
 
