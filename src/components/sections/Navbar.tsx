@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import { Menu, Sprout, X } from "lucide-react";
-
 import { cn } from "@/lib/utils";
-
+import Image from "next/image";
 import { Container } from "@/components/common/Container";
 import { LinkButton } from "@/components/ui/button";
 
@@ -38,21 +36,16 @@ export function Navbar() {
     >
       <Container>
         <nav className="flex h-16 items-center justify-between md:h-20">
-          <a href="#beranda" className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-ink bg-primary text-primary-foreground">
-              <Sprout className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
-            </span>
-            <span className="font-heading text-lg font-bold text-foreground">
-              Florist
-            </span>
-          </a>
+          <div className="flex items-center gap-2">
+            <Image src="/logo-sugih.png" alt="logo" width={100} height={100} />
+          </div>
 
           <ul className="hidden items-center gap-8 md:flex">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-base font-medium text-foreground/80 transition-colors hover:text-primary"
+                  className="text-base font-medium text-foreground/80 transition-colors hover:text-highlight hover:underline"
                 >
                   {link.label}
                 </a>
