@@ -142,4 +142,19 @@
   .btn-lift:active {
     transform: translate(0, 0);
   }
+
+  .card-brutalist {
+    border: var(--border-thin) solid var(--color-ink);
+    box-shadow: var(--shadow-brutalist-sm);
+    border-radius: var(--radius-2xl);
+    background: var(--color-surface);
+    transition:
+      transform 150ms ease-out,
+      box-shadow 150ms ease-out;
+  }
+
+  .card-brutalist:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-brutalist-md);
+  }
 }

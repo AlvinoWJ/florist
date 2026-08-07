@@ -5,11 +5,9 @@ export async function getFeaturedProducts(): Promise<Product[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("products")
-    .select(
-      "id, name, type, category, short_description, brand, image_url",
-    )
+    .select("id, name, type, category, short_description, brand, image_url")
     .order("created_at", { ascending: false })
-    .limit(8);
+    .limit(24);
 
   if (error) {
     console.error("Gagal memuat produk:", error.message);
