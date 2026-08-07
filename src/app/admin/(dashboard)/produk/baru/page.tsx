@@ -49,12 +49,6 @@ export default function NewProductPage() {
         className="mt-6 flex flex-col gap-4 rounded-2xl border-2 border-ink bg-card p-6 shadow-brutalist-sm"
       >
         <Field label="Nama" name="name" required />
-        <Field
-          label="Slug (untuk URL)"
-          name="slug"
-          required
-          placeholder="pupuk-npk-organik"
-        />
 
         <div className="flex flex-col gap-1.5">
           <label htmlFor="type" className="text-sm font-medium text-foreground">

@@ -6,7 +6,7 @@ export async function getFeaturedProducts(): Promise<Product[]> {
   const { data, error } = await supabase
     .from("products")
     .select(
-      "id, slug, name, type, category, short_description, brand, image_url",
+      "id, name, type, category, short_description, brand, image_url",
     )
     .order("created_at", { ascending: false })
     .limit(8);
@@ -18,7 +18,6 @@ export async function getFeaturedProducts(): Promise<Product[]> {
 
   return data.map((row) => ({
     id: row.id,
-    slug: row.slug,
     name: row.name,
     type: row.type as Product["type"],
     category: row.category as Product["category"],

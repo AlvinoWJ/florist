@@ -73,12 +73,6 @@ export function EditProductForm({ product }: EditProductFormProps) {
         ) : null}
 
         <Field label="Nama" name="name" defaultValue={product.name} required />
-        <Field
-          label="Slug (untuk URL)"
-          name="slug"
-          defaultValue={product.slug}
-          required
-        />
 
         <div className="flex flex-col gap-1.5">
           <label htmlFor="type" className="text-sm font-medium text-foreground">
