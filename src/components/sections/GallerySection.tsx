@@ -10,13 +10,13 @@ export async function GallerySection() {
     <section id="galeri" className="py-16 md:py-24 lg:py-32">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <span className="font-heading text-sm font-bold uppercase tracking-widest text-secondary">
-            Galeri Kami
+          <span className="inline-block items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4 bg-accent border-2 border-ink text-ink ">
+            Galeri
           </span>
           <h2 className="mt-2 font-heading text-3xl font-bold text-foreground md:text-4xl">
             Dokumentasi Kegiatan Kami
           </h2>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-4 font-medium text-muted-foreground">
             Sekilas suasana toko, gudang, hingga aktivitas kami bersama petani
             dan pelanggan.
           </p>

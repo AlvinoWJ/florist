@@ -12,15 +12,15 @@ export function ContactSection() {
     <section id="kontak" className="bg-muted py-16 md:py-24 lg:py-32 ">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
-          <span className="font-heading text-sm font-bold uppercase tracking-widest text-secondary">
+          <span className="inline-block items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4 bg-accent border-2 border-ink text-ink ">
             Kontak Kami
           </span>
           <h2 className="mt-2 font-heading text-3xl font-bold text-foreground md:text-4xl">
             Kunjungi atau Hubungi Kami
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Tim kami siap membantu kebutuhan pertanian Anda, mulai dari
-            pemilihan produk hingga konsultasi lapangan.
+          <p className="mt-4 font-medium text-muted-foreground">
+            Tim kami siap membantu kebutuhan tanaman hias anda, mulai dari
+            pemilihan produk hingga konsultasi perawatan.
           </p>
         </div>
 
@@ -60,6 +60,7 @@ export function ContactSection() {
             </div>
 
             <LinkButton
+              variant="brutalist"
               href={getWhatsappLink(
                 "Halo, saya ingin bertanya seputar produk pertanian",
               )}

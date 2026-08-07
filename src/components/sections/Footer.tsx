@@ -16,14 +16,14 @@ export function Footer() {
     <footer className="border-t-2 border-ink bg-foreground text-background">
       <Container className="flex flex-col gap-4 py-8 items-center text-center md:py-12">
         <div className="flex flex-col gap-3">
-          <div className="flex justify-center items-center gap-2">
-            <Image src="/logo-sugih.png" alt="logo" width={100} height={100} />
-            {/* <span className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-background bg-primary text-primary-foreground">
-              <Sprout className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
-            </span>
-            <span className="font-heading text-lg font-bold">
-              {storeConfig.name}
-            </span> */}
+          <div className="flex  justify-center items-center  gap-2">
+            <Image
+              src="/logo-sugih.webp"
+              alt="logo"
+              width={100}
+              height={100}
+              className="h-28 w-auto"
+            />
           </div>
           <p className="max-w-xs text-sm text-background/70">
             Mitra tepercaya petani modern — menyediakan produk pertanian
