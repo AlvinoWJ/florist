@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Sprout } from "lucide-react";
 
 import { getWhatsappLink } from "@/lib/siteConfig";
@@ -36,12 +37,24 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border-2 border-ink bg-card shadow-brutalist-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-brutalist-md">
-      <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-secondary/20 to-accent/30">
-        <Sprout
-          className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110"
-          strokeWidth={1.5}
-          aria-hidden="true"
-        />
+      <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-secondary/20 to-accent/30">
+        {product.imageUrl ? (
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <Sprout
+              className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
+          </div>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-4 md:p-6">

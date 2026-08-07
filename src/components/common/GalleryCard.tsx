@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Camera, Sprout, Users, Warehouse, Store } from "lucide-react";
 
 import type {
@@ -31,14 +32,23 @@ export function GalleryCard({ item }: GalleryCardProps) {
   return (
     <div className="group relative aspect-square transition-transform duration-300 hover:-translate-y-1">
       <figure className="relative h-full w-full overflow-hidden rounded-2xl border-2 border-ink bg-card shadow-brutalist-sm transition-shadow duration-300 group-hover:shadow-brutalist-md">
-        {/* Placeholder foto dokumentasi — ganti dengan next/image saat foto asli tersedia (lihat AGENTS.md § Image Rules) */}
-        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-secondary/20 to-accent/30">
-          <Icon
-            className="h-10 w-10 text-primary transition-transform duration-300 group-hover:scale-110"
-            strokeWidth={1.5}
-            aria-hidden="true"
+        {item.imageUrl ? (
+          <Image
+            src={item.imageUrl}
+            alt={item.title}
+            fill
+            sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+            className="object-cover"
           />
-        </div>
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-secondary/20 to-accent/30">
+            <Icon
+              className="h-10 w-10 text-primary transition-transform duration-300 group-hover:scale-110"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
+          </div>
+        )}
 
         <figcaption className="absolute inset-x-0 bottom-0 translate-y-full bg-foreground/85 p-4 text-background transition-transform duration-300 ease-out group-hover:translate-y-0">
           <span className="font-heading text-xs font-bold uppercase tracking-wide text-accent">
