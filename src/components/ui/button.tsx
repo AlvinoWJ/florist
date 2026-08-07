@@ -26,6 +26,10 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        brutalist:
+          "border-2 border-ink bg-primary font-heading font-bold text-white shadow-brutalist-sm active:translate-x-0 active:translate-y-0 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutalist-md",
+        "brutalist-outline":
+          "border-2 border-ink bg-transparent font-heading font-bold text-ink shadow-brutalist-sm hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-surface hover:shadow-brutalist-md active:translate-x-0 active:translate-y-0 active:shadow-none",
       },
       size: {
         default:
@@ -39,6 +43,7 @@ const buttonVariants = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
+        brutalist: "h-auto gap-2 rounded-full px-7 py-3 text-base",
       },
     },
     defaultVariants: {
