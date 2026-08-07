@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const productSchema = z.object({
   name: z.string().min(3, "Nama minimal 3 karakter"),
+  type: z.enum(["produk", "jasa"]),
   category: z.enum([
     "pupuk",
     "pestisida",
