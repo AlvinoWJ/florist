@@ -73,7 +73,7 @@ export function ProductCard({ product }: ProductCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             variant="brutalist"
-            className="w-full border-ink"
+            className="w-full border-ink py-4 text-base lg:py-5"
           >
             {isJasa ? "Tanya Jasa Ini" : "Konsultasi via WhatsApp"}
           </LinkButton>
