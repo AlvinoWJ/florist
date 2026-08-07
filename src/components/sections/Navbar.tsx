@@ -38,8 +38,8 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 z-50 w-full border-b-2 transition-all duration-300",
-        isScrolled || isMobileMenuOpen
-          ? "border-ink bg-background/95 backdrop-blur-sm"
+        isScrolled 
+          ? "border-ink bg-background"
           : "border-transparent bg-transparent",
       )}
     >
@@ -48,10 +48,10 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <span
               className={cn(
-                "flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl border-2 bg-background transition-colors",
+                "flex h-20 w-20 items-center justify-center overflow-hidden  transition-colors",
                 isScrolled || isMobileMenuOpen
                   ? "border-ink"
-                  : "border-background/60",
+                  : "border-card/60",
               )}
             >
               <Image
@@ -98,10 +98,10 @@ export function Navbar() {
             aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen((open) => !open)}
             className={cn(
-              "flex size-11 items-center justify-center rounded-full border-2 bg-background shadow-brutalist-sm transition-transform hover:-translate-y-0.5 md:hidden",
+              "flex size-11 items-center justify-center rounded-full border-2 md:hidden",
               isScrolled || isMobileMenuOpen
-                ? "border-ink text-foreground"
-                : "border-background/60 text-background",
+                ? "border-ink bg-background text-foreground"
+                : "border-background/60 bg-background/10 text-background hover:bg-background/10",
             )}
           >
             {isMobileMenuOpen ? (
@@ -111,41 +111,47 @@ export function Navbar() {
             )}
           </button>
         </nav>
+      </Container>
 
-        {isMobileMenuOpen ? (
-          <div className="border-t-2 border-ink bg-background md:hidden">
-            <ul className="flex flex-col px-2 py-2">
+      {isMobileMenuOpen ? (
+        <div className="w-full border-t-2 border-ink bg-card  md:hidden">
+          <Container>
+            <ul className="flex flex-col py-2 gap-3 mt-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-3 py-4 font-heading text-base font-semibold text-foreground transition-colors hover:text-highlight"
+                    className="block font-heading text-sm font-semibold py-2 px-3 rounded-xl transition-colors hover:bg-green-50"
                   >
                     {link.label}
                   </a>
                 </li>
               ))}
             </ul>
+          </Container>
 
-            <div className="border-t-2 border-ink px-4 py-4">
-              <LinkButton
-                href={getWhatsappLink(
-                  "Halo, saya ingin bertanya seputar produk pertanian",
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="brutalist"
-                size="brutalist"
-                className="w-full justify-center gap-2 bg-highlight text-ink"
-              >
-                <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                Hubungi Kami
-              </LinkButton>
-            </div>
+          <div className="w-full pb-3">
+            <Container>
+              <div className="py-4">
+                <LinkButton
+                  href={getWhatsappLink(
+                    "Halo, saya ingin bertanya seputar produk pertanian",
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="brutalist"
+                  size="brutalist"
+                  className="w-full justify-center gap-2 bg-highlight text-sm text-ink"
+                >
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Hubungi Kami
+                </LinkButton>
+              </div>
+            </Container>
           </div>
-        ) : null}
-      </Container>
+        </div>
+      ) : null}
     </header>
   );
 }
