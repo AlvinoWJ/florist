@@ -60,6 +60,7 @@ src/
 │   └── useLockBodyScroll.ts   # Hook untuk mengunci scroll body
 │
 └── middleware.ts               # Proteksi & middleware route /admin
+````
 
 > Lihat [`AGENTS.md`](./AGENTS.md) untuk aturan teknis lengkap (naming convention, arsitektur, import order, dsb) dan [`CLAUDE.md`](./CLAUDE.md) untuk brand & design system.
 
@@ -72,7 +73,7 @@ src/
 
 ### 1. Clone & install
 
-```bash
+````bash
 git clone <repo-url>
 cd florist
 npm install
