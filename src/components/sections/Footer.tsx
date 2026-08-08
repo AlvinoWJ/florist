@@ -15,19 +15,19 @@ export function Footer() {
   return (
     <footer className="border-t-2 border-ink bg-foreground text-background">
       <Container className="flex flex-col gap-4 py-8 items-center text-center md:py-12">
-        <div className="flex flex-col gap-3">
-          <div className="flex  justify-center items-center  gap-2">
+        <div className="flex flex-col gap-1">
+          <div className="flex justify-center items-center  gap-2">
             <Image
               src="/logo-sugih.webp"
-              alt="logo"
-              width={100}
-              height={100}
-              className="h-28 w-auto"
+              alt="Logo Sugih Flower"
+              width={200}
+              height={200}
+              className="h-40 w-auto"
             />
           </div>
-          <p className="max-w-xs text-sm text-background/70">
-            Mitra tepercaya petani modern — menyediakan produk pertanian
-            berkualitas dan konsultasi ramah.
+          <p className="max-w-xs text-sm text-background/70 leading-relaxed">
+            Pusat tanaman hias dan kebutuhan berkebun Menyediakan tanaman hias,
+            media tanam, pupuk, hingga perlengkapan taman.
           </p>
         </div>
 
@@ -50,8 +50,7 @@ export function Footer() {
       <div className="border-t border-background/20 py-4">
         <Container>
           <p className="text-center text-xs text-background/60">
-            © {new Date().getFullYear()} {storeConfig.name}. Seluruh hak cipta
-            dilindungi Alvino Ganteng.
+            © {new Date().getFullYear()} {storeConfig.name}
           </p>
         </Container>
       </div>
