@@ -2,7 +2,7 @@
 
 import { useActionState, useMemo, useState } from "react";
 import { X } from "lucide-react";
-
+import { LinkButton } from "@/components/ui/button";
 import {
   createProductAction,
   updateProductAction,
@@ -56,21 +56,24 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/50 backdrop-blur-sm md:items-center">
-      <div className="scrollbar-hide max-h-[90vh] w-full overflow-y-auto rounded-t-3xl border-2 border-ink bg-card p-6 shadow-brutalist-lg md:max-w-lg md:rounded-3xl md:p-8">
+      <div
+        data-lenis-prevent
+        className="scrollbar-hide max-h-[90vh] w-full overflow-y-auto rounded-t-3xl border-2 border-ink bg-card p-6 shadow-brutalist-lg md:max-w-lg md:rounded-3xl md:p-8"
+      >
         <div className="mx-auto mb-5 h-1.5 w-12 rounded-full bg-ink/20 md:hidden" />
 
         <div className="mb-5 flex items-center justify-between">
           <h2 className="font-heading text-xl font-bold text-foreground">
             {product ? "Edit Produk" : "Tambah Produk Baru"}
           </h2>
-          <button
-            type="button"
+          <LinkButton
+            variant="outline"
             onClick={onClose}
             aria-label="Tutup"
             className="flex size-9 items-center justify-center rounded-full border-2 border-ink hover:bg-muted"
           >
             <X className="h-4 w-4" aria-hidden="true" />
-          </button>
+          </LinkButton>
         </div>
 
         {product?.imageUrl ? (
@@ -215,7 +218,7 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
             <button
               type="submit"
               disabled={isPending || !!fileError}
-              className="btn-lift flex-1 rounded-lg border-2 border-ink bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-brutalist-sm disabled:opacity-60"
+              className="flex-1 rounded-lg border-2 border-ink bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-brutalist-sm active:translate-x-0 active:translate-y-0 active:shadow-none hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutalist-md disabled:opacity-60"
             >
               {isPending ? "Menyimpan..." : "Simpan"}
             </button>

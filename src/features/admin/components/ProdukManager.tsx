@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Pencil, Plus, Search, Trash2 } from "lucide-react";
-
+import { LinkButton } from "@/components/ui/button";
 import { deleteProductAction } from "@/features/admin/action/productAction";
 import { ConfirmDialog } from "@/components/common/ConfirmDialog";
 import { ProductFormModal } from "@/features/admin/components/ProductFormModal";
@@ -70,13 +70,13 @@ export function ProdukManager({ products }: ProdukManagerProps) {
             {products.length} produk terdaftar
           </p>
         </div>
-        <button
-          type="button"
+        <LinkButton
+          variant="brutalist"
           onClick={openNew}
-          className="btn-lift flex items-center gap-2 rounded-lg border-2 border-ink bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-brutalist-sm"
+          className="gap-2 rounded-lg px-6 py-5 text-sm text-primary-foreground "
         >
           <Plus className="h-4 w-4" aria-hidden="true" /> Tambah
-        </button>
+        </LinkButton>
       </div>
 
       <div className="relative mt-5 mb-6">
