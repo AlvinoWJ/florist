@@ -31,9 +31,9 @@ export default async function AdminProdukPage() {
         </p>
       ) : null}
 
-      <div className="mt-6 overflow-hidden rounded-2xl border-2 border-ink bg-card shadow-brutalist-sm">
+      <div className="mt-6 overflow-hidden rounded-lg border-2 border-ink bg-card shadow-brutalist-sm">
         <table className="w-full text-left text-sm">
-          <thead className="border-b-2 border-ink bg-muted">
+          <thead className="border-b-2 border-ink bg-accent">
             <tr>
               <th className="px-4 py-3 font-semibold">Nama</th>
               <th className="px-4 py-3 font-semibold">Jenis</th>
