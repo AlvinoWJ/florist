@@ -1,15 +1,23 @@
 "use client";
 
-import { useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Lenis from "lenis";
 
 const NAVBAR_OFFSET = 40;
+
+const LenisContext = createContext<Lenis | null>(null);
+
+export function useLenis() {
+  return useContext(LenisContext);
+}
 
 export function SmoothScrollProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [lenis, setLenis] = useState<Lenis | null>(null);
+
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -17,14 +25,15 @@ export function SmoothScrollProvider({
 
     if (prefersReducedMotion) return;
 
-    const lenis = new Lenis({
+    const lenisInstance = new Lenis({
       duration: 1.1,
       easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
     });
+    setLenis(lenisInstance);
 
     function raf(time: number) {
-      lenis.raf(time);
+      lenisInstance.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
@@ -40,7 +49,7 @@ export function SmoothScrollProvider({
       if (!section) return;
 
       event.preventDefault();
-      lenis.scrollTo(section as HTMLElement, {
+      lenisInstance.scrollTo(section as HTMLElement, {
         offset: -NAVBAR_OFFSET,
       });
     }
@@ -49,9 +58,12 @@ export function SmoothScrollProvider({
 
     return () => {
       document.removeEventListener("click", handleAnchorClick);
-      lenis.destroy();
+      lenisInstance.destroy();
+      setLenis(null);
     };
   }, []);
 
-  return <>{children}</>;
+  return (
+    <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>
+  );
 }

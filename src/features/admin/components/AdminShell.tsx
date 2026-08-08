@@ -1,7 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLenis } from "@/components/common/SmoothScrollProvider";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -25,6 +26,20 @@ const NAV_ITEMS = [
 export function AdminShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (!sidebarOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    lenis?.stop();
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      lenis?.start();
+    };
+  }, [sidebarOpen, lenis]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background md:flex-row">
