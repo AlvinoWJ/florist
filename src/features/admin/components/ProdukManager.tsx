@@ -116,7 +116,7 @@ export function ProdukManager({ products }: ProdukManagerProps) {
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-2">
-                  <p className="font-heading text-sm font-bold leading-snug text-foreground">
+                  <p className="font-heading text-sm font-bold leading-snug text-foreground line-clamp-2">
                     {p.name}
                   </p>
                   {p.badge ? (
@@ -176,7 +176,7 @@ export function ProdukManager({ products }: ProdukManagerProps) {
               <th className="px-5 py-3.5 font-heading text-xs font-bold uppercase tracking-widest">
                 Badge
               </th>
-              <th className="px-5 py-3.5 text-right font-heading text-xs font-bold uppercase tracking-widest">
+              <th className="px-5 py-3.5 font-heading text-xs font-bold uppercase tracking-widest">
                 Aksi
               </th>
             </tr>

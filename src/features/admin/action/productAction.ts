@@ -6,11 +6,12 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { productSchema } from "@/features/admin/schema/productSchema";
 
+const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB
+
 async function uploadProductImage(
   supabase: Awaited<ReturnType<typeof createClient>>,
   file: File,
 ) {
-  if (!file || file.size === 0) return null;
   const ext = file.name.split(".").pop();
   const fileName = `${crypto.randomUUID()}.${ext}`;
 
@@ -45,16 +46,20 @@ export async function createProductAction(
   if (!parsed.success)
     return { error: parsed.error.issues[0]?.message ?? "Data tidak valid." };
 
-  const supabase = await createClient();
-
-  let imageUrl: string | null = null;
   const file = formData.get("image") as File | null;
-  if (file && file.size > 0) {
-    try {
-      imageUrl = await uploadProductImage(supabase, file);
-    } catch (err) {
-      return { error: (err as Error).message };
-    }
+  if (!file || file.size === 0) {
+    return { error: "Gambar produk wajib diunggah." };
+  }
+  if (file.size > MAX_IMAGE_SIZE) {
+    return { error: "Ukuran gambar maksimal 1MB." };
+  }
+
+  const supabase = await createClient();
+  let imageUrl: string;
+  try {
+    imageUrl = await uploadProductImage(supabase, file);
+  } catch (err) {
+    return { error: (err as Error).message };
   }
 
   const { error } = await supabase.from("products").insert({
@@ -96,6 +101,9 @@ export async function updateProductAction(
 
   const file = formData.get("image") as File | null;
   if (file && file.size > 0) {
+    if (file.size > MAX_IMAGE_SIZE) {
+      return { error: "Ukuran gambar maksimal 1MB." };
+    }
     try {
       updatePayload.image_url = await uploadProductImage(supabase, file);
     } catch (err) {

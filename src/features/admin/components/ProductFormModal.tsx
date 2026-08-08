@@ -14,6 +14,8 @@ import {
 import { PRODUCT_BADGES } from "@/features/produk/types/Product.types";
 import type { Product } from "@/features/produk/types/Product.types";
 
+const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB
+
 interface ProductFormModalProps {
   product?: Product;
   onClose: () => void;
@@ -28,11 +30,26 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
   const [type, setType] = useState<"produk" | "jasa">(
     product?.type === "jasa" ? "jasa" : "produk",
   );
+  const [fileError, setFileError] = useState<string | null>(null);
 
   const categories = useMemo(
     () => (type === "jasa" ? JASA_CATEGORIES : PRODUK_CATEGORIES),
     [type],
   );
+
+  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) {
+      setFileError(null);
+      return;
+    }
+    if (file.size > MAX_IMAGE_SIZE) {
+      setFileError("Ukuran gambar melebihi 1MB. Pilih file lain.");
+      e.target.value = "";
+      return;
+    }
+    setFileError(null);
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/50 backdrop-blur-sm md:items-center">
@@ -79,7 +96,7 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
               htmlFor="type"
               className="text-sm font-medium text-foreground"
             >
-              Jenis
+              Jenis <span className="text-destructive">*</span>
             </label>
             <select
               id="type"
@@ -99,7 +116,7 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
               htmlFor="category"
               className="text-sm font-medium text-foreground"
             >
-              Kategori
+              Kategori <span className="text-destructive">*</span>
             </label>
             <select
               id="category"
@@ -143,7 +160,7 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
               htmlFor="shortDescription"
               className="text-sm font-medium text-foreground"
             >
-              Deskripsi Singkat
+              Deskripsi Singkat <span className="text-destructive">*</span>
             </label>
             <textarea
               id="shortDescription"
@@ -167,15 +184,24 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
               htmlFor="image"
               className="text-sm font-medium text-foreground"
             >
-              {product ? "Ganti Gambar (opsional)" : "Gambar"}
+              {product ? "Ganti Gambar (opsional)" : "Gambar"}{" "}
+              {!product ? <span className="text-destructive">*</span> : null}
             </label>
             <input
               id="image"
               name="image"
               type="file"
               accept="image/*"
+              required={!product}
+              onChange={handleImageChange}
               className="rounded-lg border-2 border-ink bg-background px-3 py-2 text-sm outline-none file:mr-3 file:rounded-md file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-sm"
             />
+            <p className="text-xs text-muted-foreground">
+              Format JPG/PNG/WebP, maksimal 1MB.
+            </p>
+            {fileError ? (
+              <p className="text-xs text-destructive">{fileError}</p>
+            ) : null}
           </div>
 
           {state?.error ? (
@@ -185,7 +211,7 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
           <div className="mt-2 flex gap-3">
             <button
               type="submit"
-              disabled={isPending}
+              disabled={isPending || !!fileError}
               className="btn-lift flex-1 rounded-lg border-2 border-ink bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-brutalist-sm disabled:opacity-60"
             >
               {isPending ? "Menyimpan..." : "Simpan"}
@@ -218,7 +244,7 @@ function Field({
   return (
     <div className="flex flex-col gap-1.5">
       <label htmlFor={name} className="text-sm font-medium text-foreground">
-        {label}
+        {label} {required ? <span className="text-destructive">*</span> : null}
       </label>
       <input
         id={name}
