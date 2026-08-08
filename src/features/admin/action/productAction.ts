@@ -26,18 +26,22 @@ async function uploadProductImage(
   return data.publicUrl;
 }
 
-export async function createProductAction(
-  _prevState: { error?: string } | undefined,
-  formData: FormData,
-) {
-  const parsed = productSchema.safeParse({
+function parseProductForm(formData: FormData) {
+  return productSchema.safeParse({
     name: formData.get("name"),
     type: formData.get("type"),
     category: formData.get("category"),
     shortDescription: formData.get("shortDescription"),
     brand: formData.get("brand") || undefined,
+    badge: formData.get("badge") ?? "",
   });
+}
 
+export async function createProductAction(
+  _prevState: { error?: string } | undefined,
+  formData: FormData,
+) {
+  const parsed = parseProductForm(formData);
   if (!parsed.success)
     return { error: parsed.error.issues[0]?.message ?? "Data tidak valid." };
 
@@ -59,6 +63,7 @@ export async function createProductAction(
     category: parsed.data.category,
     short_description: parsed.data.shortDescription,
     brand: parsed.data.brand ?? null,
+    badge: parsed.data.badge ?? null,
     image_url: imageUrl,
   });
 
@@ -74,14 +79,7 @@ export async function updateProductAction(
   _prevState: { error?: string } | undefined,
   formData: FormData,
 ) {
-  const parsed = productSchema.safeParse({
-    name: formData.get("name"),
-    type: formData.get("type"),
-    category: formData.get("category"),
-    shortDescription: formData.get("shortDescription"),
-    brand: formData.get("brand") || undefined,
-  });
-
+  const parsed = parseProductForm(formData);
   if (!parsed.success)
     return { error: parsed.error.issues[0]?.message ?? "Data tidak valid." };
 
@@ -93,6 +91,7 @@ export async function updateProductAction(
     category: parsed.data.category,
     short_description: parsed.data.shortDescription,
     brand: parsed.data.brand ?? null,
+    badge: parsed.data.badge ?? null,
   };
 
   const file = formData.get("image") as File | null;

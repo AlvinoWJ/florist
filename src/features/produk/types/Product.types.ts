@@ -16,6 +16,14 @@ export type ProductCategory =
   | "jasa-dekorasi"
   | "lainnya";
 
+export const PRODUCT_BADGES = [
+  "Terlaris",
+  "Baru",
+  "Populer",
+  "Pilihan",
+] as const;
+export type ProductBadge = (typeof PRODUCT_BADGES)[number];
+
 export interface Product {
   id: string;
   name: string;
@@ -24,4 +32,5 @@ export interface Product {
   shortDescription: string;
   brand?: string;
   imageUrl?: string | null;
+  badge?: ProductBadge | null;
 }

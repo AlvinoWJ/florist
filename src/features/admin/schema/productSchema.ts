@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { PRODUCT_BADGES } from "@/features/produk/types/Product.types";
+
 export const productSchema = z.object({
   name: z.string().min(3, "Nama minimal 3 karakter"),
   type: z.enum(["produk", "jasa"]),
@@ -21,4 +23,8 @@ export const productSchema = z.object({
   ]),
   shortDescription: z.string().min(10, "Deskripsi minimal 10 karakter"),
   brand: z.string().optional(),
+  badge: z
+    .union([z.enum(PRODUCT_BADGES), z.literal("")])
+    .optional()
+    .transform((v) => (v ? v : undefined)),
 });
