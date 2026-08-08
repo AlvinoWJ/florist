@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="beranda"
-      className="relative overflow-hidden py-16 md:py-24 lg:py-32 "
+      className="relative flex min-h-svh flex-col justify-center overflow-hidden py-16 md:py-24 lg:py-32 "
     >
       <Image
         src="/hero.webp"
