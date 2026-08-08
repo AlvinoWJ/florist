@@ -1,5 +1,7 @@
 "use client";
 
+import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
+
 interface ConfirmDialogProps {
   title: string;
   description: string;
@@ -19,6 +21,8 @@ export function ConfirmDialog({
   onConfirm,
   onCancel,
 }: ConfirmDialogProps) {
+  useLockBodyScroll(true);
+
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/50 backdrop-blur-sm md:items-center">
       <div className="w-full rounded-t-3xl border-2 border-ink bg-card p-7 text-center shadow-brutalist-lg md:max-w-sm md:rounded-3xl">

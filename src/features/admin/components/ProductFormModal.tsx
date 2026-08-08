@@ -13,6 +13,7 @@ import {
 } from "@/features/produk/constants/categories";
 import { PRODUCT_BADGES } from "@/features/produk/types/Product.types";
 import type { Product } from "@/features/produk/types/Product.types";
+import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 
 const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB
 
@@ -22,6 +23,8 @@ interface ProductFormModalProps {
 }
 
 export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
+  useLockBodyScroll(true);
+
   const action = product
     ? updateProductAction.bind(null, product.id)
     : createProductAction;
@@ -53,7 +56,7 @@ export function ProductFormModal({ product, onClose }: ProductFormModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/50 backdrop-blur-sm md:items-center">
-      <div className="max-h-[90vh] w-full overflow-y-auto rounded-t-3xl border-2 border-ink bg-card p-6 shadow-brutalist-lg md:max-w-lg md:rounded-3xl md:p-8">
+      <div className="scrollbar-hide max-h-[90vh] w-full overflow-y-auto rounded-t-3xl border-2 border-ink bg-card p-6 shadow-brutalist-lg md:max-w-lg md:rounded-3xl md:p-8">
         <div className="mx-auto mb-5 h-1.5 w-12 rounded-full bg-ink/20 md:hidden" />
 
         <div className="mb-5 flex items-center justify-between">
