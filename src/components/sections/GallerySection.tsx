@@ -7,7 +7,7 @@ export async function GallerySection() {
   const items = await getGalleryItems();
 
   return (
-    <section id="galeri" className="py-16 md:py-24 lg:py-32">
+    <section id="galeri" className="bg-muted py-16 md:py-24 lg:py-32">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-block items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4 bg-accent border-2 border-ink text-ink ">
