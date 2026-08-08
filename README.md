@@ -138,5 +138,6 @@ Proyek ini mengikuti tema **Modern Organic Neo-Brutalism** — border tebal 2–
 
 ## 📄 Lisensi
 
-Proprietary — hak cipta © Sugih Florist.  
-Kode sumber, desain, aset, dan materi dalam repository ini merupakan hak cipta Sugih Florist dan tidak untuk disalin, dimodifikasi, didistribusikan, atau digunakan kembali tanpa izin tertulis dari pemilik hak.
+Copyright © 2026 Alvino WJ. All rights reserved.
+
+Kode sumber, desain, aset, dan materi dalam repository ini merupakan hak cipta Alvino WJ dan tidak boleh disalin, dimodifikasi, didistribusikan, atau digunakan kembali tanpa izin tertulis.
