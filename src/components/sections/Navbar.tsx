@@ -38,7 +38,7 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 z-50 w-full border-b-2 transition-all duration-300",
-        isScrolled 
+        isScrolled
           ? "border-ink bg-background"
           : "border-transparent bg-transparent",
       )}
@@ -83,7 +83,11 @@ export function Navbar() {
 
           <div className="hidden md:block">
             <LinkButton
-              href="#kontak"
+              href={getWhatsappLink(
+                "Halo, saya ingin bertanya seputar produk tanaman hias di Sugih Florist.",
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
               variant="brutalist"
               size="brutalist"
               className="text-sm bg-highlight text-ink"

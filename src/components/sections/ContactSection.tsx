@@ -1,7 +1,5 @@
+import Image from "next/image";
 import { Clock, PhoneCall, MapPin, MessageCircle } from "lucide-react";
-import { InstagramIcon } from "@/components/ui/instagram";
-import { FacebookIcon } from "@/components/ui/facebook";
-
 import { getWhatsappLink, storeConfig } from "@/lib/siteConfig";
 
 import { Container } from "@/components/common/Container";
@@ -33,7 +31,6 @@ export function ContactSection() {
               />
               <p className="text-sm text-foreground">{storeConfig.address}</p>
             </div>
-
             <div className="flex items-start gap-3">
               <Clock
                 className="mt-0.5 h-5 w-5 shrink-0 text-primary"
@@ -48,7 +45,6 @@ export function ContactSection() {
                 ))}
               </ul>
             </div>
-
             <div className="flex items-start gap-3">
               <PhoneCall
                 className="mt-0.5 h-5 w-5 shrink-0 text-primary"
@@ -58,11 +54,10 @@ export function ContactSection() {
                 {storeConfig.whatsappNumber}
               </p>
             </div>
-
             <LinkButton
               variant="brutalist"
               href={getWhatsappLink(
-                "Halo, saya ingin bertanya seputar produk pertanian",
+                "Halo, saya ingin bertanya seputar produk tanaman hias di Sugih Florist.",
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -71,25 +66,15 @@ export function ContactSection() {
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
               Chat WhatsApp
             </LinkButton>
-
-            <div className="mt-2 justify-center flex items-center gap-3">
+            <div className="mt-2 flex items-center justify-center gap-3">
               <a
-                href={storeConfig.social.instagram}
+                href={storeConfig.social.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram Florist"
+                aria-label="TikTok Florist"
                 className="flex size-11 items-center justify-center rounded-lg border-2 border-ink transition-colors hover:bg-muted"
               >
-                <InstagramIcon size={25} />
-              </a>
-              <a
-                href={storeConfig.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook Florist"
-                className="flex size-11 items-center justify-center rounded-lg border-2 border-ink transition-colors hover:bg-muted"
-              >
-                <FacebookIcon size={25} />
+                <Image src="/tiktok.webp" alt="TikTok" width={25} height={25} />
               </a>
             </div>
           </div>
