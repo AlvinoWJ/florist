@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌿 Sugih Florist
 
-## Getting Started
+Website branding & katalog digital untuk **Sugih Florist** — toko tanaman hias modern. Bukan e-commerce, situs ini fokus membangun kepercayaan pelanggan lewat katalog produk, galeri, dan kemudahan konsultasi via WhatsApp.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss)
+![Supabase](https://img.shields.io/badge/Supabase-Postgres%20%2B%20Auth%20%2B%20Storage-3ECF8E?logo=supabase)
+
+## ✨ Fitur
+
+- **Landing page** — Hero, katalog produk unggulan, galeri, kontak, integrasi Google Maps.
+- **Katalog produk** — filter berdasarkan kategori (tanaman hias, bunga, sukulen, pupuk, pestisida, alat pertanian, jasa taman & dekorasi, dll), tanpa transaksi/keranjang.
+- **Galeri** — dokumentasi toko, gudang, produk, aktivitas, dan pelanggan.
+- **CTA WhatsApp** — setiap produk/jasa punya tombol konsultasi langsung ke WhatsApp dengan pesan otomatis.
+- **Panel Admin** (`/admin`) — CRUD produk & galeri, dilindungi Supabase Auth + middleware.
+- **Desain "Modern Organic Neo-Brutalism"** — border tegas, shadow offset, nuansa hijau alami, subtle micro-interactions (Framer Motion + Lenis smooth scroll).
+
+## 🧱 Tech Stack
+
+| Layer           | Teknologi                                                                    |
+| --------------- | ---------------------------------------------------------------------------- |
+| Framework       | [Next.js 16](https://nextjs.org) (App Router), React 19, TypeScript (strict) |
+| Styling         | Tailwind CSS v4, shadcn/ui (`aria-nova` style), class-variance-authority     |
+| Animasi         | Framer Motion (`motion`), Lenis (smooth scroll)                              |
+| Data & Auth     | [Supabase](https://supabase.com) — PostgreSQL, Auth, Storage                 |
+| Form & Validasi | React Hook Form _(direncanakan)_, Zod                                        |
+| Icon            | Lucide React                                                                 |
+| Linting         | ESLint (`eslint-config-next`)                                                |
+
+## 📁 Struktur Proyek
+
+src/
+├── app/ # Routing (App Router)
+│ ├── admin/ # Panel admin (dilindungi middleware)
+│ │ ├── login/
+│ │ └── (dashboard)/ # produk, galeri
+│ └── page.tsx # Landing page
+├── components/
+│ ├── ui/ # Atoms — shadcn/ui primitives
+│ ├── common/ # Molecules — reusable lintas fitur
+│ └── sections/ # Organisms — blok besar per halaman
+├── features/
+│ ├── produk/ # Tipe, kategori, konstanta produk
+│ ├── galeri/ # Tipe galeri
+│ └── admin/ # Form, action, schema panel admin
+├── lib/
+│ ├── api/ # Query terpusat ke Supabase
+│ ├── supabase/ # Client (browser/server/middleware)
+│ └── siteConfig.ts # Konfigurasi toko & WhatsApp
+├── hooks/ # Custom hooks (mis. useLockBodyScroll)
+└── middleware.ts # Proteksi route /admin
+
+> Lihat [`AGENTS.md`](./AGENTS.md) untuk aturan teknis lengkap (naming convention, arsitektur, import order, dsb) dan [`CLAUDE.md`](./CLAUDE.md) untuk brand & design system.
+
+## 🚀 Getting Started
+
+### Prasyarat
+
+- Node.js 20+
+- Akun & project [Supabase](https://supabase.com)
+
+### 1. Clone & install
+
+```bash
+git clone <repo-url>
+cd florist
+npm install
+```
+
+### 2. Konfigurasi environment
+
+Buat file `.env.local` di root project:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key   # hanya untuk server/seed script
+```
+
+### 3. Setup database Supabase
+
+Buat tabel `products` dan `gallery_items` di Supabase (kolom sesuai `src/lib/api/products.ts` dan `src/lib/api/gallery.ts`), aktifkan **Row Level Security (RLS)** yang membatasi write hanya untuk role admin, dan buat 2 bucket Storage: `product-images` dan `gallery-images`.
+
+### 4. (Opsional) Seed data contoh
+
+```bash
+npm run seed
+```
+
+### 5. Jalankan dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000). Panel admin tersedia di [http://localhost:3000/admin/login](http://localhost:3000/admin/login).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📜 Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command         | Keterangan                                  |
+| --------------- | ------------------------------------------- |
+| `npm run dev`   | Jalankan development server                 |
+| `npm run build` | Build production                            |
+| `npm run start` | Jalankan production server                  |
+| `npm run lint`  | Jalankan ESLint                             |
+| `npm run seed`  | Isi data contoh produk & galeri ke Supabase |
 
-## Learn More
+## 🔐 Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+| Variable                        | Wajib            | Keterangan                                                              |
+| ------------------------------- | ---------------- | ----------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | ✅               | URL project Supabase (publik)                                           |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | ✅               | Anon key Supabase (publik)                                              |
+| `SUPABASE_SERVICE_ROLE_KEY`     | ✅ (server-only) | Untuk Server Actions & script seed — **jangan pernah** expose ke client |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Proyek ini mengikuti tema **Modern Organic Neo-Brutalism** — border tebal 2–4px, shadow offset tegas, sudut membulat, palet hijau alami (`#2E7D32`, `#4CAF50`, `#AEEA00`), font Space Grotesk (heading), Plus Jakarta Sans (body), dan Inter (angka). Detail lengkap ada di [`CLAUDE.md`](./CLAUDE.md).
 
-## Deploy on Vercel
+## 🤝 Kontribusi
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Baca `CLAUDE.md` (brand & design) dan `AGENTS.md` (arsitektur & convention) sebelum mengubah kode.
+2. Buat branch baru per fitur/perbaikan.
+3. Pastikan `npm run lint` dan `npm run build` sukses tanpa error sebelum membuat PR.
+4. Ikuti struktur folder Atomic Design (`ui` → `common` → `sections`) dan feature-based folder untuk domain baru.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 Lisensi
+
+Proprietary — hak cipta © Sugih Florist. Tidak untuk didistribusikan ulang tanpa izin.
