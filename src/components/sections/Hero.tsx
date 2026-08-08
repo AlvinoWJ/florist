@@ -32,7 +32,7 @@ export function Hero() {
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative z-10 flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
-            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4 bg-accent border-ink text-ink">
+            <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-ink bg-accent px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-ink sm:gap-2 sm:px-4 sm:py-2 sm:text-xs sm:tracking-widest">
               Spesialis Tanaman Hias Terpercaya
             </span>
 
@@ -41,10 +41,10 @@ export function Hero() {
               <span className="block text-accent">Hadir di Rumahmu</span>
             </h1>
 
-            <p className="max-w-lg text-lg leading-relaxed mb-2 text-background/85">
-              Kami menyediakan pupuk, bibit, benih, dan alat pertanian
-              berkualitas — didukung konsultasi langsung untuk hasil panen
-              terbaik.
+            <p className="max-w-lg text-base leading-relaxed text-background/85 md:text-lg">
+              Hadirkan suasana hijau yang lebih asri dengan pilihan tanaman hias
+              berkualitas dan berbagai kebutuhan berkebun untuk mempercantik
+              rumahmu.
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row">
