@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { X } from "lucide-react";
 
 import {
@@ -17,6 +17,8 @@ const CATEGORIES = (
   Object.entries(CATEGORY_LABEL) as [GalleryCategory, string][]
 ).map(([value, label]) => ({ value, label }));
 
+const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB
+
 interface GalleryFormModalProps {
   item?: GalleryItem;
   onClose: () => void;
@@ -27,6 +29,21 @@ export function GalleryFormModal({ item, onClose }: GalleryFormModalProps) {
     ? updateGalleryAction.bind(null, item.id)
     : createGalleryAction;
   const [state, formAction, isPending] = useActionState(action, undefined);
+  const [fileError, setFileError] = useState<string | null>(null);
+
+  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) {
+      setFileError(null);
+      return;
+    }
+    if (file.size > MAX_IMAGE_SIZE) {
+      setFileError("Ukuran gambar melebihi 1MB. Pilih file lain.");
+      e.target.value = "";
+      return;
+    }
+    setFileError(null);
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/50 backdrop-blur-sm md:items-center">
@@ -66,7 +83,7 @@ export function GalleryFormModal({ item, onClose }: GalleryFormModalProps) {
               htmlFor="title"
               className="text-sm font-medium text-foreground"
             >
-              Judul
+              Judul <span className="text-destructive">*</span>
             </label>
             <input
               id="title"
@@ -83,7 +100,7 @@ export function GalleryFormModal({ item, onClose }: GalleryFormModalProps) {
               htmlFor="category"
               className="text-sm font-medium text-foreground"
             >
-              Kategori
+              Kategori <span className="text-destructive">*</span>
             </label>
             <select
               id="category"
@@ -105,7 +122,7 @@ export function GalleryFormModal({ item, onClose }: GalleryFormModalProps) {
               htmlFor="description"
               className="text-sm font-medium text-foreground"
             >
-              Deskripsi
+              Deskripsi <span className="text-destructive">*</span>
             </label>
             <textarea
               id="description"
@@ -122,15 +139,24 @@ export function GalleryFormModal({ item, onClose }: GalleryFormModalProps) {
               htmlFor="image"
               className="text-sm font-medium text-foreground"
             >
-              {item ? "Ganti Gambar (opsional)" : "Gambar"}
+              {item ? "Ganti Gambar (opsional)" : "Gambar"}{" "}
+              {!item ? <span className="text-destructive">*</span> : null}
             </label>
             <input
               id="image"
               name="image"
               type="file"
               accept="image/*"
+              required={!item}
+              onChange={handleImageChange}
               className="rounded-lg border-2 border-ink bg-background px-3 py-2 text-sm outline-none file:mr-3 file:rounded-md file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-sm"
             />
+            <p className="text-xs text-muted-foreground">
+              Format JPG/PNG/WebP, maksimal 1MB.
+            </p>
+            {fileError ? (
+              <p className="text-xs text-destructive">{fileError}</p>
+            ) : null}
           </div>
 
           {state?.error ? (
@@ -140,7 +166,7 @@ export function GalleryFormModal({ item, onClose }: GalleryFormModalProps) {
           <div className="mt-2 flex gap-3">
             <button
               type="submit"
-              disabled={isPending}
+              disabled={isPending || !!fileError}
               className="btn-lift flex-1 rounded-lg border-2 border-ink bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-brutalist-sm disabled:opacity-60"
             >
               {isPending ? "Menyimpan..." : "Simpan"}

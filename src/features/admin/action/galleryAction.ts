@@ -6,11 +6,12 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { gallerySchema } from "@/features/admin/schema/gallerySchema";
 
+const MAX_IMAGE_SIZE = 1 * 1024 * 1024;
+
 async function uploadGalleryImage(
   supabase: Awaited<ReturnType<typeof createClient>>,
   file: File,
 ) {
-  if (!file || file.size === 0) return null;
   const ext = file.name.split(".").pop();
   const fileName = `${crypto.randomUUID()}.${ext}`;
 
@@ -38,16 +39,21 @@ export async function createGalleryAction(
   if (!parsed.success)
     return { error: parsed.error.issues[0]?.message ?? "Data tidak valid." };
 
+  const file = formData.get("image") as File | null;
+  if (!file || file.size === 0) {
+    return { error: "Gambar galeri wajib diunggah." };
+  }
+  if (file.size > MAX_IMAGE_SIZE) {
+    return { error: "Ukuran gambar maksimal 1MB." };
+  }
+
   const supabase = await createClient();
 
-  let imageUrl: string | null = null;
-  const file = formData.get("image") as File | null;
-  if (file && file.size > 0) {
-    try {
-      imageUrl = await uploadGalleryImage(supabase, file);
-    } catch (err) {
-      return { error: (err as Error).message };
-    }
+  let imageUrl: string;
+  try {
+    imageUrl = await uploadGalleryImage(supabase, file);
+  } catch (err) {
+    return { error: (err as Error).message };
   }
 
   const { error } = await supabase.from("gallery_items").insert({
@@ -88,6 +94,9 @@ export async function updateGalleryAction(
 
   const file = formData.get("image") as File | null;
   if (file && file.size > 0) {
+    if (file.size > MAX_IMAGE_SIZE) {
+      return { error: "Ukuran gambar maksimal 1MB." };
+    }
     try {
       updatePayload.image_url = await uploadGalleryImage(supabase, file);
     } catch (err) {
