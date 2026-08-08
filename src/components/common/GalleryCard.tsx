@@ -6,7 +6,7 @@ import type {
   GalleryItem,
 } from "@/features/galeri/types/Gallery.types";
 
-const CATEGORY_LABEL: Record<GalleryCategory, string> = {
+export const CATEGORY_LABEL: Record<GalleryCategory, string> = {
   toko: "Toko",
   gudang: "Gudang",
   produk: "Produk",
