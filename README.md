@@ -138,4 +138,5 @@ Proyek ini mengikuti tema **Modern Organic Neo-Brutalism** — border tebal 2–
 
 ## 📄 Lisensi
 
-Proprietary — hak cipta © Sugih Florist. Tidak untuk didistribusikan ulang tanpa izin.
+Proprietary — hak cipta © Sugih Florist.  
+Kode sumber, desain, aset, dan materi dalam repository ini merupakan hak cipta Sugih Florist dan tidak untuk disalin, dimodifikasi, didistribusikan, atau digunakan kembali tanpa izin tertulis dari pemilik hak.
