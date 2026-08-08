@@ -124,7 +124,7 @@ export function GalleryManager({ items }: GalleryManagerProps) {
                 <Badge variant="secondary" className="w-fit">
                   {CATEGORY_LABEL[item.category]}
                 </Badge>
-                <p className="line-clamp-1 font-heading text-sm font-bold text-foreground">
+                <p className="line-clamp-2 font-heading text-sm font-bold text-foreground">
                   {item.title}
                 </p>
                 <p className="line-clamp-2 flex-1 text-xs text-muted-foreground">
