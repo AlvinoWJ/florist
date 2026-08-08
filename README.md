@@ -31,26 +31,35 @@ Website branding & katalog digital untuk **Sugih Florist** — toko tanaman hias
 
 ## 📁 Struktur Proyek
 
+````text
 src/
-├── app/ # Routing (App Router)
-│ ├── admin/ # Panel admin (dilindungi middleware)
-│ │ ├── login/
-│ │ └── (dashboard)/ # produk, galeri
-│ └── page.tsx # Landing page
-├── components/
-│ ├── ui/ # Atoms — shadcn/ui primitives
-│ ├── common/ # Molecules — reusable lintas fitur
-│ └── sections/ # Organisms — blok besar per halaman
-├── features/
-│ ├── produk/ # Tipe, kategori, konstanta produk
-│ ├── galeri/ # Tipe galeri
-│ └── admin/ # Form, action, schema panel admin
-├── lib/
-│ ├── api/ # Query terpusat ke Supabase
-│ ├── supabase/ # Client (browser/server/middleware)
-│ └── siteConfig.ts # Konfigurasi toko & WhatsApp
-├── hooks/ # Custom hooks (mis. useLockBodyScroll)
-└── middleware.ts # Proteksi route /admin
+├── app/                         # Routing & halaman (Next.js App Router)
+│   ├── admin/                   # Panel admin
+│   │   ├── login/              # Halaman login admin
+│   │   └── (dashboard)/        # Route group untuk halaman admin
+│   │       ├── produk/         # Manajemen produk
+│   │       └── galeri/         # Manajemen galeri
+│   └── page.tsx                # Landing page
+│
+├── components/                 # Komponen UI yang dapat digunakan kembali
+│   ├── ui/                    # Atoms — shadcn/ui primitives
+│   ├── common/                # Molecules — komponen reusable lintas fitur
+│   └── sections/              # Organisms — blok besar per halaman
+│
+├── features/                   # Logika dan tipe berdasarkan domain/fitur
+│   ├── produk/                # Tipe, kategori, dan konstanta produk
+│   ├── galeri/                # Tipe dan konfigurasi galeri
+│   └── admin/                 # Form, actions, dan schema panel admin
+│
+├── lib/                        # Utility & konfigurasi aplikasi
+│   ├── api/                   # Query dan fungsi akses data terpusat
+│   ├── supabase/              # Supabase client (browser/server)
+│   └── siteConfig.ts          # Konfigurasi toko & WhatsApp
+│
+├── hooks/                      # Custom React hooks
+│   └── useLockBodyScroll.ts   # Hook untuk mengunci scroll body
+│
+└── middleware.ts               # Proteksi & middleware route /admin
 
 > Lihat [`AGENTS.md`](./AGENTS.md) untuk aturan teknis lengkap (naming convention, arsitektur, import order, dsb) dan [`CLAUDE.md`](./CLAUDE.md) untuk brand & design system.
 
@@ -67,7 +76,7 @@ src/
 git clone <repo-url>
 cd florist
 npm install
-```
+````
 
 ### 2. Konfigurasi environment
 
