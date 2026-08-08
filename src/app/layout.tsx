@@ -19,9 +19,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Florist | Toko Pertanian Modern",
+  title: "Sugih Florist | Toko Tanaman Hias Modern",
   description:
-    "Toko pertanian modern menyediakan pupuk, bibit, benih, pestisida, dan alat pertanian berkualitas. Konsultasi gratis via WhatsApp.",
+    "Sugih Florist melayani pemesanan tanaman hias, tanaman buah-buahan, bibit hortikultura, media tanam, pestisida, pot tanaman, pupuk, hidroponik, hingga jasa taman & menanam. Konsultasi gratis via WhatsApp.",
 };
 
 export default function RootLayout({
